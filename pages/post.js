@@ -6,14 +6,27 @@ const Post =  ({
     name,
     summary,
     image,
+    genres,
   }
 }) => (
-    <Layout>
-       <h1>{name}</h1>
-       {/* <p dangerouslySetInnerHTML={{ __html: summary }} /> */}
-       <p>{summary.replace(/<[/]?p>/g, '')}</p>
-       <img src={image.medium}/>
-    </Layout>
+  <Layout>
+    <h1>{name}</h1>
+    <img src={image.medium}/>
+    <div dangerouslySetInnerHTML={{ __html: summary }} />
+    <div className='details'>
+      <h2>Details</h2>
+      {genres}
+    </div>
+    <style jsx>{`
+      img {
+        float: right;
+      }
+      .details {
+        margin-top: 3rem;
+        clear: both;
+      }
+    `}</style>
+  </Layout>
 )
 
 Post.getInitialProps = async function (context) {

@@ -15,11 +15,12 @@ const Index = ({
 )
 
 Index.getInitialProps = async function(context) {
-  const shows = await searchShows(context.query.q)
+  const query = context.query.q || ''
+  const shows = query ? await searchShows(query) : []
 
   return {
     shows,
-    query: context.query.q || '',
+    query,
   }
 }
 

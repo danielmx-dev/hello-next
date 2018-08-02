@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import ShowItem from './ShowItem';
 
 const ShowList = ({
   shows,
@@ -7,7 +8,9 @@ const ShowList = ({
     {shows.map(({show}) => (
       <li key={show.id}>
         <Link as={`/p/${show.id}`} href={`/post?id=${show.id}`}>
-          <a>{show.name}</a>
+          <a>
+            <ShowItem show={show} />
+          </a>
         </Link>
       </li>
     ))}
@@ -18,7 +21,7 @@ const ShowList = ({
 
       li {
         list-style: none;
-        margin: 5px 0;
+        margin: 1rem 0 0 0.5rem;
       }
 
       a {
