@@ -15,6 +15,12 @@ app.prepare()
     app.render(req, res, actualPage, queryParams)
   })
 
+  server.get('/genre/:genre', (req, res) => {
+    const actualPage = '/genre'
+    const queryParams = { genre: req.params.genre }
+    app.render(req, res, actualPage, queryParams)
+  })
+
   server.get('*', (req, res) => {
     return handle(req, res)
   })
